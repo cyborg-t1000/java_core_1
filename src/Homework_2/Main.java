@@ -1,5 +1,7 @@
 package Homework_2;
 
+import static Homework_2.DayOfWeek.TUESDAY;
+
 public class Main {
     public static void main(String[] args) {
         String[][] test = {
@@ -15,6 +17,7 @@ public class Main {
             e.printStackTrace();
         }
 
+        System.out.println("До конца недели осталось часов: " + getWorkingHours(TUESDAY));
     }
 
     private static int array4x4(String[][] array) throws MyArraySizeException, MyArrayDataException {
@@ -36,4 +39,10 @@ public class Main {
         }
         return sum;
     }
+
+    private static String getWorkingHours(DayOfWeek day) {
+        if(day.getHours()>0) return Integer.toString(day.getHours());
+        return "Выходной";
+    }
 }
+
