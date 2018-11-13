@@ -54,6 +54,17 @@ public class MainServer {
         }
     }
 
+    // method to send private message
+    public boolean privateMsg(String nick, String msg) {
+        for (ClientHandler o: clients) {
+            if(o.getNick().equals(nick)) {
+                o.sendMsg("[private]" + msg);
+                return true;
+            }
+        }
+        return false;
+    }
+
     // подписываем клиента и добавляем его в список клиентов
     public void subscribe(ClientHandler client) {
         clients.add(client);
@@ -65,9 +76,9 @@ public class MainServer {
     }
 
     // check if user already subscribed
-    public boolean isUserSubscribed(String username) {
+    public boolean isUserSubscribed(String nick) {
         for (ClientHandler o: clients) {
-            if(o.getNick().equals(username)) return true;
+            if(o.getNick().equals(nick)) return true;
         }
         return false;
     }
