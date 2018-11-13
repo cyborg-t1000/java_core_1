@@ -15,6 +15,10 @@ public class ClientHandler {
     private DataInputStream in;
     private String nick;
 
+    public String getNick() {
+        return nick;
+    }
+
     public ClientHandler(MainServer server, Socket socket) {
 
         try {
@@ -37,10 +41,14 @@ public class ClientHandler {
                                 String newNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2]);
                                // если ответ не равен null отправляем ответ клиенту о том, что авторизация прошла успешно
                                 if(newNick != null) {
-                                    sendMsg("/authok");
-                                    nick = newNick;
-                                    server.subscribe(ClientHandler.this);
-                                    break;
+                                    if(server.isUserSubscribed(newNick)) {
+                                        sendMsg("User already logged in");
+                                    } else {
+                                        sendMsg("/authok");
+                                        nick = newNick;
+                                        server.subscribe(ClientHandler.this);
+                                        break;
+                                    }
                                 } else {
                                     sendMsg("Неверный логин/пароль!");
                                 }

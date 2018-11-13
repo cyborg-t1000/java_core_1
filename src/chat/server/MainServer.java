@@ -64,4 +64,11 @@ public class MainServer {
         clients.remove(client);
     }
 
+    // check if user already subscribed
+    public boolean isUserSubscribed(String username) {
+        for (ClientHandler o: clients) {
+            if(o.getNick().equals(username)) return true;
+        }
+        return false;
+    }
 }
