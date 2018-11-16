@@ -11,7 +11,7 @@ public class AuthService {
         try {
             Class.forName("org.sqlite.JDBC");
             // строка подключения
-            connection = DriverManager.getConnection("jdbc:sqlite:mainDB25102018.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:mainDB.db");
             // установка подключения
             stmt = connection.createStatement();
         } catch (ClassNotFoundException e) {
@@ -22,19 +22,36 @@ public class AuthService {
     // метод для запроса пользователя из БД, если искомый пользоватль есть
     // то вернется ник если его нету то вернется null
     public static String getNickByLoginAndPass(String login, String pass) {
-        String sql = String.format("SELECT nickname FROM USERS" +
-                " WHERE login = '%s' AND password = '%s'", login, pass);
+        String sql = String.format("SELECT nickname, password FROM main\n" +
+                "WHERE login = '%s'", login);
+
+        int myhash = pass.hashCode();
+
+        ResultSet rs = null;
         try {
-            ResultSet rs = stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                String nick = rs.getString(1);
+                int dbHash = rs.getInt(2);
 
-            if(rs.next()) {
-                return rs.getString(1);
+                if (myhash == dbHash) {
+                    return nick;
+                }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void addUser(String login, String pass, String nick) {
+        String sql = String.format("INSERT INTO main (login, password, nickname)" +
+                "VALUES ('%s', '%s', '%s')", login, pass.hashCode(), nick);
+        try {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // метод для отключения от БД
