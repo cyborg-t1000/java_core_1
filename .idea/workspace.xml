@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fb089b9-d815-4a37-a342-6b5726657559" name="Default" comment="Added private messages">
+    <list default="true" id="0fb089b9-d815-4a37-a342-6b5726657559" name="Default" comment="Changed database">
+      <change afterPath="$PROJECT_DIR$/mainDB.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chat/server/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat/server/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chat/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chat/server/MainServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat/server/MainServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,21 +71,21 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="296" />
-          <entry key="txt" value="63" />
+          <entry key="java" value="334" />
+          <entry key="txt" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="296" />
-          <entry key="PLAIN_TEXT" value="63" />
+          <entry key="JAVA" value="334" />
+          <entry key="PLAIN_TEXT" value="103" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chat/client/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
@@ -101,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/chat/server/MainServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="159">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,8 +118,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chat/server/ClientHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="65" column="75" selection-start-line="65" selection-start-column="75" selection-end-line="65" selection-end-column="75" />
+            <state relative-caret-position="884">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#420#421#0" expanded="true" />
+                <element signature="e#447#448#0" expanded="true" />
+                <element signature="e#4503#4504#0" expanded="true" />
+                <element signature="e#4550#4551#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -177,9 +186,9 @@
         <option value="$PROJECT_DIR$/src/Homework_6/StartServer.java" />
         <option value="$PROJECT_DIR$/src/Homework_6/Client.java" />
         <option value="$PROJECT_DIR$/src/Homework_6/Server.java" />
-        <option value="$PROJECT_DIR$/src/chat/server/MainServer.java" />
-        <option value="$PROJECT_DIR$/src/chat/server/ClientHandler.java" />
         <option value="$PROJECT_DIR$/src/chat/server/AuthService.java" />
+        <option value="$PROJECT_DIR$/src/chat/server/ClientHandler.java" />
+        <option value="$PROJECT_DIR$/src/chat/server/MainServer.java" />
       </list>
     </option>
   </component>
@@ -250,7 +259,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542331594381" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542333607438" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../sqlite-jdbc-3.25.2.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Project" />
@@ -411,7 +420,7 @@
       <workItem from="1540021424380" duration="9574000" />
       <workItem from="1542079565227" duration="3072000" />
       <workItem from="1542326759030" duration="81000" />
-      <workItem from="1542326899002" duration="2793000" />
+      <workItem from="1542326899002" duration="4717000" />
     </task>
     <task id="LOCAL-00001" summary="Added homework #2">
       <created>1540502008873</created>
@@ -455,14 +464,22 @@
       <option name="project" value="LOCAL" />
       <updated>1542082571428</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added password hashing">
+      <created>1542331660025</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1542331660026</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15520000" />
+    <option name="totallyTimeSpent" value="17444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14026846" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -473,15 +490,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.72348994" visible="true" weight="0.2609929" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.72348994" weight="0.2609929" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49720672" weight="0.39904422" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.32907802" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.27651006" side_tool="true" visible="true" weight="0.2609929" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5060403" side_tool="true" visible="true" weight="0.32765958" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49463087" weight="0.32765958" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" sideWeight="0.49395972" visible="true" weight="0.32765958" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -508,7 +525,9 @@
     <MESSAGE value="Added chat from lesson #7" />
     <MESSAGE value="Added check for duplicate login" />
     <MESSAGE value="Added private messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added private messages" />
+    <MESSAGE value="Added password hashing" />
+    <MESSAGE value="Changed database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed database" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Lesson_1.java" />
@@ -691,23 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/server/ClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="65" column="75" selection-start-line="65" selection-start-column="75" selection-end-line="65" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/server/MainServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/chat/server/AuthService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -726,6 +728,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/server/ClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
+            <element signature="e#447#448#0" expanded="true" />
+            <element signature="e#4503#4504#0" expanded="true" />
+            <element signature="e#4550#4551#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/server/MainServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

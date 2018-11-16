@@ -4,16 +4,17 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Vector;
+import java.util.ArrayList;
+
 // класс для работы к клиентами
 public class ClientHandler {
 
     private MainServer server;
-
-    private Socket socket;
+    private Socket socket = null;
     private DataOutputStream out;
     private DataInputStream in;
     private String nick;
+    ArrayList<String> blackList;
 
     public String getNick() {
         return nick;
@@ -26,6 +27,7 @@ public class ClientHandler {
             this.socket = socket;
             this.in = new DataInputStream(socket.getInputStream());
             this.out = new DataOutputStream(socket.getOutputStream());
+            this.blackList = new ArrayList<>();
 
             new Thread(new Runnable() {
                 @Override
@@ -50,22 +52,29 @@ public class ClientHandler {
                                         break;
                                     }
                                 } else {
-                                    sendMsg("Неверный логин/пароль!");
+                                    sendMsg("Wrong Login/Password!");
                                 }
                             }
                         }
                         // цикл для работы
                         while (true) {
                             String str = in.readUTF();
-                            if(str.equals("/end")) {
-                                out.writeUTF("/serverClosed");
-                                break;
-                            }
-                            if(str.startsWith("/w ")) {
-                                String[] tokens = str.split(" ", 3);
-                                server.privateMsg(tokens[1], nick + ": " + tokens[2]);
+                            if(str.startsWith("/")) {
+                                if(str.equals("/end")) {
+                                    out.writeUTF("/serverClosed");
+                                    break;
+                                }
+                                if(str.startsWith("/w ")) {
+                                    String[] tokens = str.split(" ", 3);
+                                    server.privateMsg(ClientHandler.this, tokens[1], tokens[2]);
+                                }
+                                if(str.startsWith("/blacklist ")) {
+                                    String[] tokens = str.split(" ");
+                                    blackList.add(tokens[1]);
+                                    sendMsg("You've added user " + tokens[1] + " to blacklist");
+                                }
                             } else {
-                                server.broadCastMsg(nick + ": " + str);
+                                server.broadCastMsg(ClientHandler.this, str);
                             }
                         }
                     } catch (IOException e) {
@@ -95,6 +104,11 @@ public class ClientHandler {
             e.printStackTrace();
         }
     }
+
+    public boolean checkBlackList(String nick) {
+        return blackList.contains(nick);
+    }
+
     // метод для оправки сообщения 1 клиенту
     public void sendMsg(String msg) {
         try {

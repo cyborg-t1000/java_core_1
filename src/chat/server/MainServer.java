@@ -48,21 +48,23 @@ public class MainServer {
 
     }
     // метод для рассылки сообщения всем клиентам
-    public void broadCastMsg(String msg) {
+    public void broadCastMsg(ClientHandler from, String msg) {
         for (ClientHandler o: clients) {
-            o.sendMsg(msg);
+            if(!o.checkBlackList(from.getNick())) {
+                o.sendMsg(from.getNick() + ": " + msg);
+            }
         }
     }
 
     // method to send private message
-    public boolean privateMsg(String nick, String msg) {
+    public void privateMsg(ClientHandler from, String nick, String msg) {
         for (ClientHandler o: clients) {
             if(o.getNick().equals(nick)) {
-                o.sendMsg("[private]" + msg);
-                return true;
+                o.sendMsg("[private] " + from.getNick() + ": " + msg);
+                from.sendMsg("[private to " + nick + "] " + from.getNick() + ": " + msg);
             }
         }
-        return false;
+        from.sendMsg("User with nick " + nick + " not found!");
     }
 
     // подписываем клиента и добавляем его в список клиентов
