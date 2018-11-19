@@ -66,7 +66,9 @@ public class ClientHandler {
                                 }
                                 if(str.startsWith("/w ")) {
                                     String[] tokens = str.split(" ", 3);
-                                    server.privateMsg(ClientHandler.this, tokens[1], tokens[2]);
+                                    if(tokens.length==3) {
+                                        server.privateMsg(ClientHandler.this, tokens[1], tokens[2]);
+                                    }
                                 }
                                 if(str.startsWith("/blacklist ")) {
                                     String[] tokens = str.split(" ");

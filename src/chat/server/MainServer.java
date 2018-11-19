@@ -20,13 +20,13 @@ public class MainServer {
             AuthService.connect();
 
             server = new ServerSocket(8189);
-            System.out.println("Сервер запущен!");
+            System.out.println("Server started!");
 
             while (true) {
                 socket = server.accept();
-                System.out.println("Клиент подключился!");
-                // создаем нового клиента
-               new ClientHandler(this, socket);
+                System.out.println("Client connected!");
+                // create new client
+                new ClientHandler(this, socket);
             }
 
         } catch (IOException e) {
@@ -47,6 +47,7 @@ public class MainServer {
         }
 
     }
+
     // метод для рассылки сообщения всем клиентам
     public void broadCastMsg(ClientHandler from, String msg) {
         for (ClientHandler o: clients) {
@@ -62,6 +63,7 @@ public class MainServer {
             if(o.getNick().equals(nick)) {
                 o.sendMsg("[private] " + from.getNick() + ": " + msg);
                 from.sendMsg("[private to " + nick + "] " + from.getNick() + ": " + msg);
+                return;
             }
         }
         from.sendMsg("User with nick " + nick + " not found!");
@@ -70,11 +72,13 @@ public class MainServer {
     // подписываем клиента и добавляем его в список клиентов
     public void subscribe(ClientHandler client) {
         clients.add(client);
+        broadcastClientList();
     }
 
     // отписываем клиента и удаляем его из списка клиентов
     public void unsubscribe(ClientHandler client) {
         clients.remove(client);
+        broadcastClientList();
     }
 
     // check if user already subscribed
@@ -84,4 +88,19 @@ public class MainServer {
         }
         return false;
     }
+
+    public void broadcastClientList() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("/clientlist ");
+
+        for (ClientHandler o : clients) {
+            sb.append(o.getNick() + " ");
+        }
+
+        String out = sb.toString();
+        for (ClientHandler o : clients) {
+            o.sendMsg(out);
+        }
+    }
+
 }
